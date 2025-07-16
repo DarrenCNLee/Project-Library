@@ -36,7 +36,7 @@ function displayBooks() {
 
     // Add event listeners to remove buttons
     libraryContainer.querySelectorAll('.remove').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const idToRemove = this.getAttribute('data-id');
             const index = myLibrary.findIndex(book => book.id === idToRemove);
             if (index !== -1) {
@@ -44,6 +44,28 @@ function displayBooks() {
                 displayBooks();
             }
         });
+    });
+
+    // Add event listeners to toggle read status
+    libraryContainer.querySelectorAll('.book').forEach(bookElement => {
+        const bookId = bookElement.querySelector('.remove').getAttribute('data-id');
+        
+        // Add a "Toggle Read" button
+        const toggleReadBtn = document.createElement('button');
+        toggleReadBtn.textContent = 'Toggle Read';
+        toggleReadBtn.classList.add('toggle-read');
+        toggleReadBtn.setAttribute('data-id', bookId);
+        bookElement.appendChild(toggleReadBtn);
+
+        // Add event listener to the "Toggle Read" button
+        toggleReadBtn.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent triggering other click events
+            const idToToggle = toggleReadBtn.getAttribute('data-id');
+            toggleReadStatus(idToToggle);
+        });
+
+        // Add hover class for highlighting
+        bookElement.classList.add('hoverable');
     });
 }
 
@@ -90,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle form submission
-    dialog.querySelector('#book-form').addEventListener('submit', function(event) {
+    dialog.querySelector('#book-form').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
         const formData = new FormData(this);
         const title = formData.get('title');
