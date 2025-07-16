@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Library</title>
+    <style>
+        .library {
+            margin-top: 2em;
+        }
+
+        .book {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+
+        dialog {
+            border-radius: 8px;
+            border: 1px solid #888;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="new-book-btn">New Book</button>
+    <dialog id="book-dialog">
+        <form id="book-form" method="dialog">
+            <h2>Add New Book</h2>
+            <label>Title: <input type="text" name="title" required></label><br>
+            <label>Author: <input type="text" name="author" required></label><br>
+            <label>Pages: <input type="number" name="pages" min="1" required></label><br>
+            <label>Read: <input type="checkbox" name="read"></label><br>
+            <button type="submit">Add Book</button>
+            <button type="button" id="close-dialog">Cancel</button>
+        </form>
+    </dialog>
+    <div class="library"></div>
+    <script src="index.js"></script>
+</body>
+
+</html>
