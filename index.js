@@ -84,7 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     newBookBtn.addEventListener('click', () => dialog.showModal());
 
     // Close dialog
-    dialog.querySelector('#close-dialog').addEventListener('click', () => dialog.close());
+    dialog.querySelector('#close-dialog').addEventListener('click', () => {
+        dialog.querySelector('#book-form').reset(); // Clear the form
+        dialog.close();
+    });
 
     // Handle form submission
     dialog.querySelector('#book-form').addEventListener('submit', function(event) {
