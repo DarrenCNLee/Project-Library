@@ -64,8 +64,7 @@ function displayBooks() {
             toggleReadStatus(idToToggle);
         });
 
-        // Add hover class for highlighting
-        bookElement.classList.add('hoverable');
+    
     });
 }
 
